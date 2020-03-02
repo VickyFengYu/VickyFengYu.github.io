@@ -22,7 +22,6 @@ Java provide Semaphore class in **java.util.concurrent package** that implements
 ```
 Semaphore(int num)
 Semaphore(int num, boolean how)
-
 ```
 
 Here, num specifies the initial permit count. Thus, it specifies the number of threads that can access a shared resource at any one time. If it is one, then only one thread can access the resource at any one time. By default, all waiting threads are granted a permit in an undefined order. By setting how to true, you can ensure that waiting threads are granted a permit in the order in which they requested access.
