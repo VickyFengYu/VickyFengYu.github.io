@@ -1,6 +1,6 @@
 ## Welcome to GitHub Pages
 
-https://vickyfengyu.github.io/vicky.github.io/
+https://vickyfengyu.github.io/
 
 ### Jekyll Themes
 
