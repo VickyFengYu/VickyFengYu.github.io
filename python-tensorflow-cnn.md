@@ -46,3 +46,55 @@ There are various architectures of CNNs available, like
 
 > ResNet
 
+
+### <i class="icon-file"></i> BatchNormalization
+
+```
+@keras_export('keras.layers.BatchNormalization', v1=[])  # pylint: disable=missing-docstring
+class BatchNormalization(normalization.BatchNormalizationBase):
+
+  __doc__ = normalization.replace_in_base_docstring([
+``` 
+
+>**About setting `layer.trainable = False` on a `BatchNormalization layer:**
+>
+> The meaning of setting `layer.trainable = False` is to freeze the layer,
+> i.e. its internal state will not change during training:
+> its trainable weights will not be updated
+> during `fit()` or `train_on_batch()`, and its state updates will not be run.
+>
+> Usually, this does not necessarily mean that the layer is run in inference
+> mode (which is normally controlled by the `training` argument that can
+> be passed when calling a layer). "Frozen state" and "inference mode"
+> are two separate concepts.
+>
+> However, in the case of the `BatchNormalization` layer, **setting
+> `trainable = False` on the layer means that the layer will be
+> subsequently run in inference mode** (meaning that it will use
+> the moving mean and the moving variance to normalize the current batch,
+> rather than using the mean and variance of the current batch).
+
+### <i class="icon-file"></i> class BatchNormalizationBase(Layer)
+
+> Normalize the activations of the previous layer at each batch,
+> i.e. applies a transformation that maintains the mean activation
+> close to 0 and the activation standard deviation close to 1.
+>
+> Batch normalization differs from other layers in several key aspects:
+>
+> 1) Adding BatchNormalization with `training=True` to a model causes the
+> result of one example to depend on the contents of all other examples in a
+> minibatch. Be careful when padding batches or masking examples, as these can
+> change the minibatch statistics and affect other examples.
+>
+> 2) Updates to the weights (moving statistics) are based on the forward pass
+> of a model rather than the result of gradient computations.
+>
+> 3) When performing inference using a model containing batch normalization, it
+> is generally (though not always) desirable to use accumulated statistics
+> rather than mini-batch statistics. This is acomplished by passing
+> `training=False` when calling the model, or using `model.predict`.
+
+### <i class="icon-file"></i> x = tf.nn.relu(x)
+
+> Computes rectified linear: `max(features, 0)
