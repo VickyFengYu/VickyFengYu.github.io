@@ -35,7 +35,7 @@ https://vickyfengyu.github.io/
 ## Python
 
 ----------
-### [Recommendation Engine](https://vickyfengyu.github.io/RecommendationSystemPython)
+### [Recommendation Engine](https://vickyfengyu.github.io/machine-learning/RecommendationSystemPython)
 ### [Spider (null)](#)
 
 
